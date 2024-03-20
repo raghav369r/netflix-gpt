@@ -28,6 +28,7 @@ const login=async(data)=>{
         setJwttoken(response.data);
         return;
     }catch(ex){
+        if(!ex.response) return "server Down!! Try again later";
         let err=ex.response.data;
         if(ex.response.status===404) err="Server Error!! Try Again later";
         return err;
@@ -45,6 +46,7 @@ const register=async(data)=>{
         setJwttoken(response.data.token);
         return;
     }catch(ex){
+        if(!ex.response) return "server Down!! Try again later";
         let err=ex.response.data;
         if(ex.response.status===404) err="Server Error!! Try Again later";
         return err;
